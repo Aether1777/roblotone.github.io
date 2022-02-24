@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+    //created a variable for instructions
+       var instructions = '<h1><center>You will see three different symbols appear</center></h1>';
+
+    //Created a button
+       var button = document.createElement('button');
+        button.innerHTML = 'Click here to Start';
+
+       var body = document.getElementsByTagName('body')[0];
+        body.appendChild(button);
+        button.addEventListener('click', function(){
+        if('click'){
+            document.open(newPage)
+        }
+        });
+
+    //Pressing a key (space bar in this case) will open up a blank page with the instructions of the experiment 
+    document.addEventListener('keydown',function(e){
+    if(e.keyCode==32){ 
+        document.location.href=('about:blank');
+        document.write(instructions)
+}
+});
+
+</script>
 <title>
 </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
