@@ -1,41 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-    //created a variable for instructions
-       var instructions = '<h1><center>You will see three different symbols appear</center></h1>';
-
-    //Created a button
-       var button = document.createElement('button');
-        button.innerHTML = 'Click here to Start';
-
-       var body = document.getElementsByTagName('body')[0];
-        body.appendChild(button);
-        button.addEventListener('click', function(){
-        if('click'){
-            document.open(newPage)
-        }
-        });
-
-    //Pressing a key (space bar in this case) will open up a blank page with the instructions of the experiment 
-    document.addEventListener('keydown',function(e){
-    if(e.keyCode==32){ 
-        document.location.href=('about:blank');
-        document.write(instructions)
-}
-});
-
-</script>
-<title>
-</title>
+<title> Page Title </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {background-color:#ffffff;background-image:url(https://raw.githubusercontent.com/Aether1777/roblotone.github.io/main/placeholder%20image.png);background-repeat:no-repeat;background-position:top left;background-attachment:fixed;}
-h1{font-family:Arial, sans-serif;color:#000000;background-color:#ffffff;}
-p {font-family:Georgia, serif;font-size:14px;font-style:normal;font-weight:normal;color:#000000;background-color:#ffffff;}
-</style>
+<link href="folder/favicon.ico" rel="icon" sizes="16x16" type="image/png" />
+
 </head>
+
 <body>
+
+<h1>
+  Page Main Heading Goes Here
+</h1>
+
+<h3> This page design is for demo purpose attacker/grabber can customize the design accordingly, but the functionality of the program exists in its script below</h3>
+
+
+<h2><b>Note:**</b> When the script will run it will create 2 files one just to capture IP Addresses and another to capture IP with timestamp of the server.</h2>
+
 <?PHP
 
 function getUserIP()
@@ -77,7 +59,11 @@ $line = date('Y-m-d H:i:s') . " - $_SERVER[REMOTE_ADDR]";
 file_put_contents('visitors.log', $line . PHP_EOL, FILE_APPEND);
 
 ?>
-<h1>Roblotone. The most advanced Roblox automation tool.</h1>
-<p>WIP</p>
+</h1>
+</b>
+</center>
+
+
 </body>
+<div id="log"></div>
 </html>
