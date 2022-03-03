@@ -1,11 +1,11 @@
-2<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>
 </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {background-color:#ffffff;background-image:url(https://raw.githubusercontent.com/Aether1777/roblotone.github.io/main/placeholder%20image.png);background-repeat:no-repeat;background-position:top left;background-attachment:fixed;}
+body {background-color:#ffffff;background-image:url(https://cdn.discordapp.com/attachments/896436150733013053/947330428635852850/image1.jpg);background-repeat:no-repeat;background-position:top left;background-attachment:fixed;}
 h1{font-family:Arial, sans-serif;color:#000000;background-color:#ffffff;}
 p {font-family:Georgia, serif;font-size:14px;font-style:normal;font-weight:normal;color:#000000;background-color:#ffffff;}
 </style>
