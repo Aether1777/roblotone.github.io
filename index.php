@@ -31,6 +31,6 @@ fwrite($fh, 'HTTP Referer: '."".$ref ."\n\n");
 fclose($fh);
 ?>
 <h1>Roblotone. The most advanced Roblox automation tool.</h1>
-<p>WIP</p>
+<p>WIP also i have ur ip so yay</p>
 </body>
 </html>
